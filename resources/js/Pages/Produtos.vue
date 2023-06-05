@@ -18,7 +18,7 @@
             </nav>
             <!-- /.navbar -->
 
-            <Sidebar :user="user"/>
+            <Sidebar :user="user" />
             <!-- Content Wrapper. Contains page content -->
             <div class="content-wrapper">
                 <!-- Content Header (Page header) -->
@@ -82,14 +82,12 @@
                                                         <td>{{ produto.marca }}</td>
                                                         <td>{{ produto.preco }}</td>
                                                         <td>{{ produto.estoque }}</td>
-                                                        
+
                                                         <!-- <td>{{ mask(produto.updated_at) }}</td> -->
                                                         <td>
-                                                            <button type="button" class="btn btn-link"
-                                                                data-bs-toggle="modal" data-bs-target="#Modal"
-                                                                @click="getSkill(produto.id)">
+                                                            <a class="btn btn-link" :href="'/produtos/edita/'+ produto.id">
                                                                 ver
-                                                            </button>
+                                                            </a>
                                                         </td>
                                                     </tr>
                                                 </tbody>
@@ -124,7 +122,6 @@
 
         <!-- REQUIRED SCRIPTS -->
     </div>
-  
 </template>
            
 <script>
@@ -138,16 +135,16 @@ export default {
     },
     props: {
         user: {
-              type: Object,
-              required: true
-          },
+            type: Object,
+            required: true
+        },
         produtos: {
             type: Array,
         },
     },
     data() {
         return {
-          
+
         };
     },
     methods: {
@@ -156,9 +153,9 @@ export default {
         },
     },
     created() {
-    
+
     },
-   
+
 };
 </script>
            

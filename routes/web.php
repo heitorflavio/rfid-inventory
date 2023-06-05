@@ -24,6 +24,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/produtos',  [App\Http\Controllers\PainelController::class, 'produtos']);
     Route::get('/produtos/cadastro',  [App\Http\Controllers\PainelController::class, 'produtosCadastro']);
     Route::post('/produtos/cadastro',  [App\Http\Controllers\ProdutosController::class, 'store']);
+    Route::get('/produtos/edita/{id}', [App\Http\Controllers\ProdutosController::class, 'show']);
+    Route::post('/produtos/edita/{id}', [App\Http\Controllers\ProdutosController::class, 'update']);
     Route::get('/tags', [App\Http\Controllers\PainelController::class, 'tags']);
     Route::get('/', [App\Http\Controllers\PainelController::class, 'redirect']);
 });

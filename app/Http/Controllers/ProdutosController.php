@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Produtos;
 use App\Http\Requests\StoreProdutosRequest;
 use App\Http\Requests\UpdateProdutosRequest;
+use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 
 class ProdutosController extends Controller
@@ -15,7 +16,7 @@ class ProdutosController extends Controller
     public function index()
     {
         $produtos = Produtos::orderBy('id', 'desc')->get();
-        return Inertia::render('Produtos',['produtos' => $produtos]);
+        return Inertia::render('Produtos', ['produtos' => $produtos]);
     }
 
     /**
@@ -33,7 +34,7 @@ class ProdutosController extends Controller
     {
         // print_r($request->all());
         // exit;
-        
+
         $validatedData = $request->validate([
             'nome' => 'required',
             'valor' => 'required',
@@ -45,15 +46,12 @@ class ProdutosController extends Controller
             'unidade' => 'required'
         ]);
 
-        return $request->image;
-        if(!$request->image){
+        if (!$request->image) {
             $image_path = '';
-            
-        }else{            
+        } else {
             $image = $request->file('image');
             $imageName = time() . '.' . $image->extension();
-            $image_path = $image->storeAs('img/skills', $imageName);
-           
+            $image_path = $image->storeAs('img/produtos', $imageName);
         }
 
         $produtos = Produtos::create([
@@ -69,17 +67,20 @@ class ProdutosController extends Controller
             'unidade' => $validatedData['unidade']
         ]);
 
-      
-        return redirect()->back();
 
+        return redirect()->back();
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Produtos $produtos)
+    public function show(Produtos $produtos, $id)
     {
-        //
+        $produto = Produtos::where('id', $id)->first();
+
+        return Inertia::render('ProdutosEdita', [
+            'produto' => $produto, 'user' => auth()->user(),
+        ]);
     }
 
     /**
@@ -93,9 +94,32 @@ class ProdutosController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateProdutosRequest $request, Produtos $produtos)
+    public function update(UpdateProdutosRequest $request, Produtos $produtos, $id)
     {
-        //
+        if (!$request->image) {
+            $image_path = '';
+        } else {
+            $image = $request->file('image');
+            $imageName = time() . '.' . $image->extension();
+            $image_path = $image->storeAs('img/produtos', $imageName);
+        }
+
+        $produto = Produtos::where('id', $id)->first();
+
+        $produto->update([
+            'nome' => $request->nome,
+            'descricao' => $request->descricao,
+            'preco' => $request->valor,
+            'categoria' => $request->categoria,
+            'subcategoria' => $request->subcategoria,
+            'marca' => $request->marca,
+            'modelo' => $request->modelo,
+            'sku' => $request->sku,
+            'imagem' =>  $image_path,
+            'unidade' => $request->unidade
+        ]);
+
+        return redirect()->back();
     }
 
     /**
