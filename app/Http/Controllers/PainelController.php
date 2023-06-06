@@ -55,4 +55,16 @@ class PainelController extends Controller
         $tags = TagProdutos::where('status', 1)->get();
         return Inertia::render('Tags',['tags'=>$tags, 'user' => auth()->user()]);
     }
+
+    public function produtosEstoque($id){
+
+        $produto = Produtos::where('id', $id)->first();
+        $tags = TagProdutos::where('status', 1)->get();
+
+        return Inertia::render('ProdutosEstoque', [
+            'user' => auth()->user(),
+            'produto' => $produto,
+            'tags' => $tags,
+        ]);
+    }
 }

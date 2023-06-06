@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('marca');
             $table->string('unidade');
             $table->string('modelo');
-            $table->string('sku');
+            $table->string('sku')->unique();
             $table->timestamps();
         });
     }

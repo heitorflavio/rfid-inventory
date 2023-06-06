@@ -50,7 +50,12 @@
                                     <form :action="'/produtos/edita/'+produto.id" method="post" enctype="multipart/form-data">
                                         <div class="card-header">
                                             <div class="d-flex justify-content-between">
-                                                <h4>Produtos</h4>
+                                                <h4>Produto</h4>
+                                                <div class="card-tools">
+                                                <a :href="'/produtos/estoque/' + produto.id">
+                                                    Adicionar Estoque 
+                                                </a>
+                                            </div>
                                             </div>
                                         </div>
                                         <div class="card-body">
@@ -188,8 +193,8 @@
                                                 </div>
                                                 <div class="row mt-2">
                                                     <div class="col-sm-12">
-                                                        <img :src="image" alt="image" class="img-thumbnail"
-                                                            style="width: 100px" v-if="image" />
+                                                        <img :src="url + produto.imagem" alt="image" class="img-thumbnail"
+                                                            style="width: 100px" v-if="produto.imagem" />
                                                         <img src="img/default-img.png" alt="image" class="img-thumbnail"
                                                             style="width: 100px" v-else />
                                                     </div>
@@ -255,7 +260,8 @@ export default {
     },
     data() {
         return {
-            image: null
+            image: null,
+            url: window.location.origin + "/"
         };
     },
     methods: {

@@ -32,8 +32,6 @@ class ProdutosController extends Controller
      */
     public function store(StoreProdutosRequest $request)
     {
-        // print_r($request->all());
-        // exit;
 
         $validatedData = $request->validate([
             'nome' => 'required',

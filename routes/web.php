@@ -28,6 +28,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/produtos/edita/{id}', [App\Http\Controllers\ProdutosController::class, 'update']);
     Route::get('/tags', [App\Http\Controllers\PainelController::class, 'tags']);
     Route::get('/', [App\Http\Controllers\PainelController::class, 'redirect']);
+    Route::get('/produtos/estoque/{id}',  [App\Http\Controllers\PainelController::class, 'produtosEstoque']);
+    Route::post('/produtos/estoque/{id}',  [App\Http\Controllers\EstoqueController::class, 'store']);
+
 });
 
 

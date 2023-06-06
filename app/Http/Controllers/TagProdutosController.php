@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\TagProdutos;
 use App\Models\TagMestre;
+use App\Models\Estoque;
 use App\Models\User;
 use App\Http\Requests\StoreTagProdutosRequest;
 use App\Http\Requests\UpdateTagProdutosRequest;
@@ -32,9 +33,17 @@ class TagProdutosController extends Controller
     public function store(StoreTagProdutosRequest $request)
     {
 
-        $tag = TagProdutos::where('hash', $request->tag)->first();
+        $tag = TagProdutos::where('hash', $request->tag)->where('status', 1)->first();
         $mestre = TagMestre::where('hash',$request->tag)->first();
+        $estoque = Estoque::where('tag', $request->tag)->where('status', 1)->first();
        
+        if($estoque){
+            return response()->json([
+                'code' => 403,
+                'status' => 'error',
+                'msg' => 'tag ja cadastrada no estoque'
+            ]);
+        }
         if($mestre){
             return response()->json([
                 'code' => 403,
