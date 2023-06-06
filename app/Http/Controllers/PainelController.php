@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Inertia\Inertia;
 use App\Models\Produtos;
 use App\Models\TagProdutos;
+use App\Models\Estoque;
 
 class PainelController extends Controller
 {
@@ -17,9 +18,21 @@ class PainelController extends Controller
         $tags = TagProdutos::where('status', 1)->get();
         $tags = count($tags);
         $produtos = count($produtos);
+        $estoque = Estoque::where('status', 1)->get();
+
+        $total = 0;
+        $items = count($estoque);
+
+        foreach ($estoque as $key => $value) {
+            $prod = Produtos::where('id', $value->produto_id)->first();
+            $total += $prod->preco;
+        }
+
         return Inertia::render('Dashboard', [
             'user' => auth()->user(),
+            'total' => $total,
             'produtos' => $produtos,
+            'items' => $items,
             'tags' => $tags,
         ]);
     }
@@ -53,10 +66,11 @@ class PainelController extends Controller
     public function tags()
     {
         $tags = TagProdutos::where('status', 1)->get();
-        return Inertia::render('Tags',['tags'=>$tags, 'user' => auth()->user()]);
+        return Inertia::render('Tags', ['tags' => $tags, 'user' => auth()->user()]);
     }
 
-    public function produtosEstoque($id){
+    public function produtosEstoque($id)
+    {
 
         $produto = Produtos::where('id', $id)->first();
         $tags = TagProdutos::where('status', 1)->get();
