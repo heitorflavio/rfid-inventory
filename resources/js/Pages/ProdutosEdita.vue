@@ -148,8 +148,8 @@
                                                     <div class="col-sm-3">
                                                         <div class="form-group">
                                                             <label for="valor">Valor</label>
-                                                            <input type="text" class="form-control" id="valor" name="valor" v-model="produto.preco"
-                                                                required />
+                                                            <input type="text" class="form-control" id="valor" name="valor" v-model="valor"
+                                                             required />
                                                         </div>
                                                     </div>
                                                     <div class="col-sm-3">
@@ -239,7 +239,11 @@
     
 
 </template>
-           
+         
+<script setup>
+ import { vMaska } from "maska";
+</script>
+
 <script>
 import Sidebar from "@/Components/Sidebar.vue";
 import moment from "moment";
@@ -261,7 +265,8 @@ export default {
     data() {
         return {
             image: null,
-            url: window.location.origin + "/"
+            url: window.location.origin + "/",
+            valor: this.produto.preco
         };
     },
     methods: {
@@ -273,11 +278,59 @@ export default {
         mask: function (data) {
             return moment(data).format("DD/MM/YYYY HH:mm:ss");
         },
+        ValorMask: function () {
+          
+                // Remove all non-numeric characters
+                let numericValue = this.produto.preco.replace(/[^\d]/g, '');
+
+                // Check if the value has not changed or if it's not a number
+                if (numericValue === oldValue || isNaN(numericValue)) {
+                    return;
+                }
+
+                // Convert the numeric value to a number
+                let number = parseFloat(numericValue);
+
+                // Format the number as currency
+                this.valor = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(number/ 100);
+
+
+        }
+        
+    },
+    watch: {
+        valor(newValue, oldValue) {
+            // Remove all non-numeric characters
+            let numericValue = newValue.replace(/[^\d]/g, '');
+
+            // Check if the value has not changed or if it's not a number
+            if (numericValue === oldValue || isNaN(numericValue)) {
+                return;
+            }
+
+            // Convert the numeric value to a number
+            let number = parseFloat(numericValue);
+
+            // Format the number as currency
+            this.valor = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(number / 100);
+            
+        },
     },
     created() {
         // if (produto.image) {
         //     this.image = produto.image
         // }
+       
+    },
+    mounted() {
+        // this.$nextTick(function () {
+        //     // Code that will run only after the
+        //     // entire view has been rendered
+        //     this.$refs.myInput.focus();
+        //   })
+
+        // this.ValorMask()
+       
     },
 
 };

@@ -144,7 +144,7 @@
                                                         <div class="form-group">
                                                             <label for="valor">Valor</label>
                                                             <input type="text" class="form-control" id="valor" name="valor"
-                                                                v-maska data-maska="R$##,##" required />
+                                                                v-model="valor" required />
                                                         </div>
                                                     </div>
                                                     <div class="col-sm-3">
@@ -232,9 +232,9 @@
     </div>
 </template>
 
-<script setup>
+<!-- <script setup>
  import { vMaska } from "maska";
-</script>
+</script> -->
 
 <script>
 import Sidebar from "@/Components/Sidebar.vue";
@@ -256,7 +256,8 @@ export default {
     },
     data() {
         return {
-            image: null
+            image: null,
+            valor: null,
         };
     },
     methods: {
@@ -267,6 +268,29 @@ export default {
         },
         mask: function (data) {
             return moment(data).format("DD/MM/YYYY HH:mm:ss");
+        },
+        formatCurrency(value) {
+            const parts = value.split(".");
+            parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+            return parts.join(",");
+        }
+    },
+    watch: {
+        valor(newValue, oldValue) {
+            // Remove all non-numeric characters
+            let numericValue = newValue.replace(/[^\d]/g, '');
+
+            // Check if the value has not changed or if it's not a number
+            if (numericValue === oldValue || isNaN(numericValue)) {
+                return;
+            }
+
+            // Convert the numeric value to a number
+            let number = parseFloat(numericValue);
+
+            // Format the number as currency
+            this.valor = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(number / 100);
+            
         },
     },
     created() {

@@ -44,6 +44,12 @@ class ProdutosController extends Controller
             'unidade' => 'required'
         ]);
 
+        // $valor = $validatedData['valor'];
+
+        // print_r( Controller::Valor($validatedData['valor']));
+        // exit;
+
+
         if (!$request->image) {
             $image_path = '';
         } else {
@@ -55,7 +61,7 @@ class ProdutosController extends Controller
         $produtos = Produtos::create([
             'nome' => $validatedData['nome'],
             'descricao' => $request->descricao,
-            'preco' => $validatedData['valor'],
+            'preco' => Controller::Valor($validatedData['valor']),
             'categoria' => $validatedData['categoria'],
             'subcategoria' => $validatedData['subcategoria'],
             'marca' => $validatedData['marca'],
@@ -107,7 +113,7 @@ class ProdutosController extends Controller
         $produto->update([
             'nome' => $request->nome,
             'descricao' => $request->descricao,
-            'preco' => $request->valor,
+            'preco' =>  Controller::Valor($request->valor),
             'categoria' => $request->categoria,
             'subcategoria' => $request->subcategoria,
             'marca' => $request->marca,

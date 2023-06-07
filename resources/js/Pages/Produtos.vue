@@ -80,7 +80,7 @@
                                                         </td>
                                                         <td>{{ produto.nome }}</td>
                                                         <td>{{ produto.marca }}</td>
-                                                        <td>{{ produto.preco }}</td>
+                                                        <td>{{ ValorMask(produto.preco) }}</td>
                                                         <td>{{ produto.estoque }}</td>
 
                                                         <!-- <td>{{ mask(produto.updated_at) }}</td> -->
@@ -151,6 +151,9 @@ export default {
         mask: function (data) {
             return moment(data).format("DD/MM/YYYY HH:mm:ss");
         },
+        ValorMask: function (val) {
+            return val.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
+        }
     },
     created() {
 
