@@ -19,6 +19,7 @@
         "vue": "^3.2.31"
     },
     "dependencies": {
+        "maska": "^2.1.9",
         "moment": "^2.29.4"
     }
 }

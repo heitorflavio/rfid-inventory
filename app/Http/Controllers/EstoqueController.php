@@ -28,10 +28,10 @@ class EstoqueController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreEstoqueRequest $request,$id)
+    public function store(StoreEstoqueRequest $request, $id)
     {
 
-        
+
 
         $response = [];
 
@@ -85,5 +85,21 @@ class EstoqueController extends Controller
     public function destroy(Estoque $estoque)
     {
         //
+    }
+
+    public function down(StoreEstoqueRequest $request)
+    {
+
+        $estoque = Estoque::where('tag', $request->tag)->where('status', 1)->first();
+        if ($estoque) {
+            $estoque->status = 0;
+            $estoque->save();
+        } else {
+            $estoque = Estoque::where('tag', $request->tag)->where('status', 0)->first();
+            $estoque->status = 1;
+            $estoque->save();
+        }
+
+        return 'true';
     }
 }

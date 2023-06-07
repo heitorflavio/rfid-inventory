@@ -20,3 +20,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::post("/tag/new", [App\Http\Controllers\TagProdutosController::class, 'store']);
 Route::post("/tag/check", [App\Http\Controllers\TagMestreController::class, 'checkTag']);
+Route::post("/tag/stock",  [App\Http\Controllers\EstoqueController::class, 'down']);

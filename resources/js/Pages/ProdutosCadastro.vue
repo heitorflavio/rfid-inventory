@@ -144,7 +144,7 @@
                                                         <div class="form-group">
                                                             <label for="valor">Valor</label>
                                                             <input type="text" class="form-control" id="valor" name="valor"
-                                                                required />
+                                                                v-maska data-maska="R$##,##" required />
                                                         </div>
                                                     </div>
                                                     <div class="col-sm-3">
@@ -230,11 +230,12 @@
 
         <!-- REQUIRED SCRIPTS -->
     </div>
-   
-    
-
 </template>
-           
+
+<script setup>
+ import { vMaska } from "maska";
+</script>
+
 <script>
 import Sidebar from "@/Components/Sidebar.vue";
 import moment from "moment";
@@ -262,7 +263,7 @@ export default {
         onFileChange(e) {
             const file = e.target.files[0];
             this.image = URL.createObjectURL(file);
-           
+
         },
         mask: function (data) {
             return moment(data).format("DD/MM/YYYY HH:mm:ss");

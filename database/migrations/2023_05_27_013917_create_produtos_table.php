@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('nome');
             $table->string('descricao');
             $table->string('imagem')->nullable();
-            $table->string('preco');
+            $table->float('preco');
             $table->string('categoria');
             $table->string('subcategoria');
             $table->string('marca');
