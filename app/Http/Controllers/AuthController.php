@@ -19,4 +19,9 @@ class AuthController extends Controller
             return redirect()->back()->withErrors(['login' => 'Credenciais inválidas, tente novamente.']);
         }
     }
+
+    public function Logout(){
+        Auth::logout();
+        return redirect()->route('login');
+    }
 }

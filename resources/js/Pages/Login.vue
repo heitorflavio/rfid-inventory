@@ -10,13 +10,13 @@
                     <div
                       class="flex-grow-1 bg-login-image"
                     >
-                    <img src="assets/img/dogs/image2.jpeg" class="img-fluid" alt="Imagem">
+                    <img src="assets/img/dogs/stock.jpg" class="img-fluid" alt="Imagem">
                   </div>
                   </div>
                   <div class="col-lg-6">
                     <div class="p-5">
                       <div class="text-center">
-                        <h4 class="text-dark mb-4">Welcome Back!</h4>
+                        <h4 class="text-dark mb-4">BEM-VINDO</h4>
                       </div>
                       <form class="user" action="/login" method="post">
                         <div class="mb-3">

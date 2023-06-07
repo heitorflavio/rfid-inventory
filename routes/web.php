@@ -35,4 +35,5 @@ Route::group(['middleware' => 'auth'], function () {
 
 
 Route::get('/login', [App\Http\Controllers\PainelController::class, 'login'])->name('login');
-Route::post('/login', [App\Http\Controllers\aUTHController::class, 'Auth']);
+Route::post('/login', [App\Http\Controllers\AuthController::class, 'Auth']);
+Route::get('/logout', [App\Http\Controllers\AuthController::class, 'Logout']);
