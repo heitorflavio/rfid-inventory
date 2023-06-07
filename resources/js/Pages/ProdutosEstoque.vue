@@ -120,7 +120,7 @@
                                                 </div>
                                                 <div class="row mt-2">
                                                     <div class="col-sm-12">
-                                                        <img :src='url + produto.imagem' alt="logo" class="img-thumbnail"
+                                                        <img :src='image' alt="logo" class="img-thumbnail"
                                                                 style="width: 100px" />
                                                       
                                                     </div>
@@ -216,10 +216,15 @@ export default {
         // }
     },
     created() {
-        // if (produto.imagem) {
-        //     this.image = produto.imagem
-        // }
+       
     },
+    mounted() {
+        if (this.produto.imagem) {
+            this.image = this.url + this.produto.imagem
+        } else {
+            this.image = this.url + 'img/produtos/default.png'
+        }
+    }
 
 };
 </script>
