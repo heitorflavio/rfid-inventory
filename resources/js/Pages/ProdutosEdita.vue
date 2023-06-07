@@ -193,10 +193,8 @@
                                                 </div>
                                                 <div class="row mt-2">
                                                     <div class="col-sm-12">
-                                                        <img :src="url + produto.imagem" alt="image" class="img-thumbnail"
-                                                            style="width: 100px" v-if="produto.imagem" />
-                                                        <img src="img/default-img.png" alt="image" class="img-thumbnail"
-                                                            style="width: 100px" v-else />
+                                                        <img :src="image" alt="image" class="img-thumbnail"
+                                                            style="width: 100px" />
                                                     </div>
                                                 </div>
                                             </div>
@@ -266,7 +264,7 @@ export default {
         return {
             image: null,
             url: window.location.origin + "/",
-            valor: this.produto.preco
+            valor: this.produto.preco,
         };
     },
     methods: {
@@ -323,13 +321,13 @@ export default {
        
     },
     mounted() {
-        // this.$nextTick(function () {
-        //     // Code that will run only after the
-        //     // entire view has been rendered
-        //     this.$refs.myInput.focus();
-        //   })
+    
 
-        // this.ValorMask()
+        if (this.produto.imagem) {
+            this.image = this.url + this.produto.imagem
+        } else {
+            this.image = this.url + 'img/produtos/default.png'
+        }
        
     },
 

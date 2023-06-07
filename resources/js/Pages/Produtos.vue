@@ -75,7 +75,9 @@
                                                     <tr v-for="produto in produtos" :key="produto.id">
                                                         <th scope="row">{{ produto.id }}</th>
                                                         <td>
-                                                            <img :src="produto.imagem" alt="logo" class="img-thumbnail"
+                                                            <img :src="produto.imagem" alt="logo" class="img-thumbnail" v-if="produto.imagem"
+                                                                style="width: 50px" />
+                                                                <img :src=" url + 'img/produtos/default.png' " alt="logo" class="img-thumbnail" v-else
                                                                 style="width: 50px" />
                                                         </td>
                                                         <td>{{ produto.nome }}</td>
@@ -111,12 +113,7 @@
             <!-- /.control-sidebar -->
 
             <!-- Main Footer -->
-            <footer class="main-footer">
-                <strong>Copyright &copy; 2014-2021
-                    <a href="https://adminlte.io">FARE</a>.</strong>
-                All rights reserved.
-                <div class="float-right d-none d-sm-inline-block"></div>
-            </footer>
+            <Footer />
         </div>
         <!-- ./wrapper -->
 
@@ -126,12 +123,14 @@
            
 <script>
 import Sidebar from "@/Components/Sidebar.vue";
+import Footer from '@/Components/Footer.vue'
 import moment from "moment";
 import axios from 'axios'
 export default {
     name: "Produtos",
     components: {
         Sidebar,
+        Footer
     },
     props: {
         user: {
@@ -144,7 +143,7 @@ export default {
     },
     data() {
         return {
-
+           url: window.location.origin + "/"
         };
     },
     methods: {

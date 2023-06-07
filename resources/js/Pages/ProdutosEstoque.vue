@@ -152,12 +152,7 @@
             <!-- /.control-sidebar -->
 
             <!-- Main Footer -->
-            <footer class="main-footer">
-                <strong>Copyright &copy; 2014-2021
-                    <a href="https://adminlte.io">FARE</a>.</strong>
-                All rights reserved.
-                <div class="float-right d-none d-sm-inline-block"></div>
-            </footer>
+           <Footer />
         </div>
         <!-- ./wrapper -->
 
@@ -167,12 +162,14 @@
            
 <script>
 import Sidebar from "@/Components/Sidebar.vue";
+import Footer from '@/Components/Footer.vue'
 import moment from "moment";
 import axios from 'axios'
 export default {
     name: "ProdutosEstoque",
     components: {
         Sidebar,
+        Footer
     },
     props: {
         user: {
