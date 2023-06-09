@@ -10,7 +10,7 @@
     <!-- Sidebar -->
     <div class="sidebar os-host os-theme-light os-host-overflow os-host-overflow-y os-host-resize-disabled os-host-transition os-host-scrollbar-horizontal-hidden">
       <!-- Sidebar user panel (optional) -->
-      <div class="user-panel mt-3 pb-3 mb-3 d-flex justify-content-center align-content-center">
+      <div class="user-panel mt-3 pb-3 mb-3 ">
         <div class="image">
           <img :src="url + 'img/avatar/avatar2.jpeg'" alt="User Image" class="img-circle elevation-2">
         </div>

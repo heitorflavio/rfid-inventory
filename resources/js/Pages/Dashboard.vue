@@ -83,7 +83,7 @@
 
                 <div class="small-box bg-info">
                   <div class="inner">
-                    <h3>R$ {{ total }}</h3>
+                    <h3>{{ ValorMask(total) }}</h3>
                     <p>Valor Total No Estoque</p>
                   </div>
                   <div class="icon">
@@ -142,7 +142,7 @@
               <div class="col-lg-3 col-6">
                 <div class="small-box bg-info">
                   <div class="inner">
-                    <h3>R$ {{ valorIn }}</h3>
+                    <h3>{{ ValorMask(valorIn) }}</h3>
                     <p>Valor Entradas do Dia</p>
                   </div>
                   <div class="icon">
@@ -174,7 +174,7 @@
               <div class="col-lg-3 col-6">
                 <div class="small-box bg-info">
                   <div class="inner">
-                    <h3>R$ {{ valorOut }}</h3>
+                    <h3>{{ ValorMask(valorOut) }}</h3>
                     <p>Valor Saidas do Dia</p>
                   </div>
                   <div class="icon">
@@ -206,7 +206,7 @@
                         <th scope="row">{{ i.id }}</th>
                         <td>{{ i.nome }}</td>
                         <td>{{ i.sku }}</td>
-                        <td>{{ i.preco }}</td>
+                        <td>{{ ValorMask(i.preco) }}</td>
                         <td>{{ i.tag }}</td>
                       </tr>
                     </tbody>
@@ -232,7 +232,7 @@
                         <th scope="row">{{ ou.id }}</th>
                         <td>{{ ou.nome }}</td>
                         <td>{{ ou.sku }}</td>
-                        <td>{{ ou.preco }}</td>
+                        <td>{{ ValorMask(ou.preco) }}</td>
                         <td>{{ ou.tag }}</td>
                       </tr>
                     </tbody>
@@ -318,6 +318,11 @@ export default {
       type: Array
     }
 
+  },
+  methods: {
+    ValorMask: function (val) {
+            return val.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
+        }
   }
 
 }
