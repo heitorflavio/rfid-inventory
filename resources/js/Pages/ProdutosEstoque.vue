@@ -59,10 +59,10 @@
                                                     <div class="col-sm-6">
                                                         <div class="form-group">
                                                             <label for="nome">Nome</label>
-                                                            <input type="text" class="form-control" id="nome" name="nome" disabled
-                                                                v-model="produto.nome" required />
+                                                            <input type="text" class="form-control" id="nome" name="nome"
+                                                                disabled v-model="produto.nome" required />
                                                         </div>
-                                                    </div>    
+                                                    </div>
                                                     <div class="col-sm-2">
                                                         <div class="form-group">
                                                             <label for="modelo">Modelo</label>
@@ -73,8 +73,8 @@
                                                     <div class="col-sm-2">
                                                         <div class="form-group">
                                                             <label for="sku">sku</label>
-                                                            <input type="text" class="form-control" id="estoque" name="sku" disabled
-                                                                v-model="produto.sku" required />
+                                                            <input type="text" class="form-control" id="estoque" name="sku"
+                                                                disabled v-model="produto.sku" required />
                                                         </div>
                                                     </div>
                                                     <div class="col-sm-2">
@@ -87,42 +87,44 @@
                                                                 <option value="4">Marca 4</option>
                                                                 <option value="5">Marca 5</option>
                                                             </select> -->
-                                                            <input type="text" class="form-control" id="marca" name="marca" disabled
-                                                                v-model="produto.marca">
+                                                            <input type="text" class="form-control" id="marca" name="marca"
+                                                                disabled v-model="produto.marca">
                                                         </div>
                                                     </div>
                                                     <div class="col-sm-6"></div>
                                                     <div class="col-sm-6">
-                                                        <table class="table table-hover ">
-                                                            <thead>
-                                                                <tr>
-                                                                    <th scope="col">#</th>
-                                                                    <th scope="col">ADICIONAR</th>
-                                                                    <th scope="col">HASH</th>
-                                                                    <th scope="col">ADICIONADO POR</th>
-                                                                    <th scope="col">ADICIONADO EM</th>
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody>
-                                                                <tr v-for="tag in tags" :key="tag.id">
-                                                                    <th scope="row">{{ tag.id }}</th>
-                                                                    <th>
-                                                                        <input type="checkbox" @click="add(tag.hash)">
-                                                                    </th>
-                                                                    <td>{{ tag.hash }}</td>
-                                                                    <td>{{ tag.name }}</td>
-                                                                    <td>{{ mask(tag.created_at) }}</td>
-                                                                </tr>
-                                                            </tbody>
-                                                        </table>
+                                                        <div class="table-responsive">
+                                                            <table class="table table-hover ">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th scope="col">#</th>
+                                                                        <th scope="col">ADICIONAR</th>
+                                                                        <th scope="col">HASH</th>
+                                                                        <th scope="col">ADICIONADO POR</th>
+                                                                        <th scope="col">ADICIONADO EM</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    <tr v-for="tag in tags" :key="tag.id">
+                                                                        <th scope="row">{{ tag.id }}</th>
+                                                                        <th>
+                                                                            <input type="checkbox" @click="add(tag.hash)">
+                                                                        </th>
+                                                                        <td>{{ tag.hash }}</td>
+                                                                        <td>{{ tag.name }}</td>
+                                                                        <td>{{ mask(tag.created_at) }}</td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
                                                     </div>
 
                                                 </div>
                                                 <div class="row mt-2">
                                                     <div class="col-sm-12">
                                                         <img :src='image' alt="logo" class="img-thumbnail"
-                                                                style="width: 100px" />
-                                                      
+                                                            style="width: 100px" />
+
                                                     </div>
                                                 </div>
 
@@ -131,7 +133,8 @@
                                         </div>
                                         <div class="card-footer">
                                             <div class="d-flex justify-content-end">
-                                                <button type="button" @click="produtoPost()" class="btn btn-primary">Cadastrar</button>
+                                                <button type="button" @click="produtoPost()"
+                                                    class="btn btn-primary">Cadastrar</button>
                                             </div>
                                         </div>
                                     </form>
@@ -146,13 +149,11 @@
             <!-- /.content-wrapper -->
 
             <!-- Control Sidebar -->
-            <aside class="control-sidebar control-sidebar-dark">
-                <!-- Control sidebar content goes here -->
-            </aside>
+          
             <!-- /.control-sidebar -->
 
             <!-- Main Footer -->
-           <Footer />
+            <Footer />
         </div>
         <!-- ./wrapper -->
 
@@ -207,16 +208,16 @@ export default {
             }).then(response => {
                 console.log(response)
                 window.location.reload();
-                
+
             })
-        } 
+        }
         // add(val) {
         //     this.hashs[val] = val
         //     console.log(this.hashs)
         // }
     },
     created() {
-       
+
     },
     mounted() {
         if (this.produto.imagem) {

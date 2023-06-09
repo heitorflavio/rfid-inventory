@@ -40,6 +40,12 @@ class PainelController extends Controller
     public function produtos()
     {
         $produtos = Produtos::orderBy('id', 'desc')->get();
+
+        foreach ($produtos as $key => $value) {
+            $estoque = Estoque::where('produto_id', $value->id)->where('status', 1)->get();
+            $value->estoque = count($estoque);
+        }
+
         return Inertia::render('Produtos', [
             'produtos' => $produtos,
             'user' => auth()->user(),

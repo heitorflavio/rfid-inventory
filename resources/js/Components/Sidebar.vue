@@ -7,7 +7,7 @@
     </a>
 
     <!-- Sidebar -->
-    <div class="sidebar">
+    <div class="sidebar os-host os-theme-light os-host-overflow os-host-overflow-y os-host-resize-disabled os-host-transition os-host-scrollbar-horizontal-hidden">
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex justify-content-center align-content-center">
         <div class="image">
@@ -35,13 +35,13 @@
 
           <li class="nav-item">
             <a href="/produtos" class="nav-link">
-              <i class="nav-icon fas fa-users"></i>
+              <i class="nav-icon fas fa-th"></i>
               <p class="text">Produtos</p>
             </a>
           </li>
           <li class="nav-item">
             <a href="/tags" class="nav-link">
-              <i class="nav-icon fas fa-users"></i>
+              <i class="nav-icon far fa-plus-square"></i>
               <p class="text">Tags</p>
             </a>
           </li>
@@ -77,5 +77,15 @@ export default {
 <style scoped>
 #name-user {
   text-decoration: none;
+}
+
+.sidebar {
+
+  overflow-y: auto !important;
+  margin-right: 0;
+  -webkit-transition: all 0.3s !important;
+  -moz-transition: all 0.3s !important;
+  -ms-transition: all 0.3s !important;
+  -o-transition: all 0.3s !important;
 }
 </style>

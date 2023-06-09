@@ -54,7 +54,7 @@
                                         </div>
                                     </div>
                                     <div class="card-body">
-                                        <div>
+                                        <div class="table-responsive">
                                             <table class="table table-hover ">
                                                 <thead>
                                                     <tr>
@@ -94,9 +94,7 @@
             <!-- /.content-wrapper -->
 
             <!-- Control Sidebar -->
-            <aside class="control-sidebar control-sidebar-dark">
-                <!-- Control sidebar content goes here -->
-            </aside>
+          
             <!-- /.control-sidebar -->
 
             <!-- Main Footer -->

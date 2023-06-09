@@ -52,7 +52,7 @@
                                             <div class="d-flex justify-content-between">
                                                 <h4>Produto</h4>
                                                 <div class="card-tools">
-                                                <a :href="'/produtos/estoque/' + produto.id">
+                                                <a :href="'/produtos/estoque/' + produto.id" class="btn btn-link">
                                                     Adicionar Estoque 
                                                 </a>
                                             </div>
@@ -216,9 +216,7 @@
             <!-- /.content-wrapper -->
 
             <!-- Control Sidebar -->
-            <aside class="control-sidebar control-sidebar-dark">
-                <!-- Control sidebar content goes here -->
-            </aside>
+          
             <!-- /.control-sidebar -->
 
             <!-- Main Footer -->

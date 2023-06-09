@@ -45,20 +45,20 @@
                 <div class="content">
                     <div class="container-fluid">
                         <div class="row">
-                            <div class="col-12">
+                            <div class="col-sm-12 col-xl-12 col-md-12 col-xs-12">
                                 <div class="card">
                                     <div class="card-header">
                                         <div class="d-flex justify-content-between">
                                             <h4>Produtos</h4>
                                             <div class="card-tools">
-                                                <a href="/produtos/cadastro">
+                                                <a href="/produtos/cadastro" class="btn btn-link" >
                                                     CADASTRAR
                                                 </a>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="card-body">
-                                        <div>
+                                        <div class="table-responsive">
                                             <table class="table table-hover ">
                                                 <thead>
                                                     <tr>
@@ -107,9 +107,7 @@
             <!-- /.content-wrapper -->
 
             <!-- Control Sidebar -->
-            <aside class="control-sidebar control-sidebar-dark">
-                <!-- Control sidebar content goes here -->
-            </aside>
+          
             <!-- /.control-sidebar -->
 
             <!-- Main Footer -->
