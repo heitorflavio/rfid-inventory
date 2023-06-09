@@ -4,6 +4,7 @@
     <!-- Brand Logo -->
     <a href="#" class="brand-link d-flex justify-content-center">
       <!-- <img src="" alt="AdminLTE Logo" class=" " style="opacity: .8"> -->
+      <h3>🆂🆃🆁🅵</h3>
     </a>
 
     <!-- Sidebar -->
@@ -11,7 +12,7 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex justify-content-center align-content-center">
         <div class="image">
-          <!-- <img src="" alt="User Image"> -->
+          <img :src="url + 'img/avatar/avatar2.jpeg'" alt="User Image" class="img-circle elevation-2">
         </div>
         <div class="info">
           <div class="">
@@ -46,6 +47,12 @@
             </a>
           </li>
           <li class="nav-item">
+            <a href="/relatorio" class="nav-link">
+              <i class="nav-icon fas fa-copy"></i>
+              <p class="text">Relatório</p>
+            </a>
+          </li>
+          <li class="nav-item">
             <a href="/users" class="nav-link">
               <i class="nav-icon fas fa-users"></i>
               <p class="text">Usuários</p>
@@ -70,6 +77,16 @@ export default {
   name: "Sidebar",
   props: {
     user: Object,
+  },
+  data() {
+    return {
+      url: window.location.origin + "/"
+    }
+  },
+  methods: {
+    name: function () {
+      return this.user.name.charAt(0);
+    }
   }
 };
 </script>

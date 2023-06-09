@@ -4,6 +4,7 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -30,6 +31,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/', [App\Http\Controllers\PainelController::class, 'redirect']);
     Route::get('/produtos/estoque/{id}',  [App\Http\Controllers\PainelController::class, 'produtosEstoque']);
     Route::post('/produtos/estoque/{id}',  [App\Http\Controllers\EstoqueController::class, 'store']);
+    Route::get('/relatorio', [App\Http\Controllers\PainelController::class, 'relatorio'] );
+    
 
 });
 

@@ -121,6 +121,127 @@
               </div>
 
             </div>
+            <div class="row">
+              <div class="col-lg-3 col-6">
+
+                <div class="small-box bg-info">
+                  <div class="inner">
+                    <h3>{{ inputDate }}</h3>
+                    <p>Entradas do Dia</p>
+                  </div>
+                  <div class="icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="currentColor"
+                      class="bi bi-arrow-up" viewBox="0 0 16 16">
+                      <path fill-rule="evenodd"
+                        d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z" />
+                    </svg>
+                  </div>
+                  <!-- <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a> -->
+                </div>
+              </div>
+              <div class="col-lg-3 col-6">
+                <div class="small-box bg-info">
+                  <div class="inner">
+                    <h3>R$ {{ valorIn }}</h3>
+                    <p>Valor Entradas do Dia</p>
+                  </div>
+                  <div class="icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="currentColor"
+                      class="bi bi-arrow-up" viewBox="0 0 16 16">
+                      <path fill-rule="evenodd"
+                        d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z" />
+                    </svg>
+                  </div>
+                  <!-- <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a> -->
+                </div>
+              </div>
+              <div class="col-lg-3 col-6">
+                <div class="small-box bg-info">
+                  <div class="inner">
+                    <h3>{{ outputDate }}</h3>
+                    <p>Saidas do Dia</p>
+                  </div>
+                  <div class="icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="currentColor"
+                      class="bi bi-arrow-down" viewBox="0 0 16 16">
+                      <path fill-rule="evenodd"
+                        d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1z" />
+                    </svg>
+                  </div>
+                  <!-- <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a> -->
+                </div>
+              </div>
+              <div class="col-lg-3 col-6">
+                <div class="small-box bg-info">
+                  <div class="inner">
+                    <h3>R$ {{ valorOut }}</h3>
+                    <p>Valor Saidas do Dia</p>
+                  </div>
+                  <div class="icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="currentColor"
+                      class="bi bi-arrow-down" viewBox="0 0 16 16">
+                      <path fill-rule="evenodd"
+                        d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1z" />
+                    </svg>
+                  </div>
+                  <!-- <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a> -->
+                </div>
+              </div>
+            </div>
+            <div class="row mt-4">
+              <div class="col-sm-6 col-md-6 col-xs-6 col-lg-6">
+                <div class="table-responsive">
+                  <table class="table table-success table-striped">
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">NOME</th>
+                        <th scope="col">SKU</th>
+                        <th scope="col">PREÇO</th>
+                        <th scope="col">TAG</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr v-for="i in ins" :key="i.id">
+                        <th scope="row">{{ i.id }}</th>
+                        <td>{{ i.nome }}</td>
+                        <td>{{ i.sku }}</td>
+                        <td>{{ i.preco }}</td>
+                        <td>{{ i.tag }}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              <div class="col-sm-6 col-md-6 col-xs-6 col-lg-6">
+                <div class="table-responsive">
+                  <table class="table table-danger table-striped">
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">NOME</th>
+                        <th scope="col">SKU</th>
+                        <th scope="col">PREÇO</th>
+                        <th scope="col">TAG</th>
+
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr v-for="ou in out" :key="ou.id">
+                        <th scope="row">{{ ou.id }}</th>
+                        <td>{{ ou.nome }}</td>
+                        <td>{{ ou.sku }}</td>
+                        <td>{{ ou.preco }}</td>
+                        <td>{{ ou.tag }}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+            </div>
+
           </div>
           <!-- /.container-fluid -->
         </div>
@@ -128,7 +249,7 @@
       </div>
       <!-- /.content-wrapper -->
 
-     
+
       <!-- /.control-sidebar -->
 
       <!-- Main Footer -->
@@ -171,6 +292,30 @@ export default {
     items: {
       type: Number,
       required: true
+    },
+    inputDate: {
+      type: Number,
+      required: true
+    },
+    outputDate: {
+      type: Number,
+      required: true
+    },
+    valorIn: {
+      type: Number,
+      required: true
+
+    },
+    valorOut: {
+      type: Number,
+      required: true
+
+    },
+    ins: {
+      type: Array
+    },
+    out: {
+      type: Array
     }
 
   }
