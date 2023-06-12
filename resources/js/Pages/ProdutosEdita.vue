@@ -188,7 +188,7 @@
                                                 <div class="row">
                                                     <div class="col-sm-12">
                                                         <textarea name="descricao" id="description" cols="30" rows="4"
-                                                            class="form-control" placeholder="Descrição" v-model="produto.descricao"></textarea>
+                                                            class="form-control" placeholder="Descrição" required v-model="produto.descricao"></textarea>
                                                     </div>
                                                 </div>
                                                 <div class="row mt-2">

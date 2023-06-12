@@ -44,6 +44,11 @@
                 <!-- Main content -->
                 <div class="content">
                     <div class="container-fluid">
+                        <div v-if="mensagem" class="alert alert-success">
+                          <div class="d-flex justify-content-center">
+                            {{ mensagem }}
+                          </div>
+                        </div>
                         <div class="row">
                             <div class="col-12">
                                 <div class="card">
@@ -183,7 +188,7 @@
                                                 <div class="row">
                                                     <div class="col-sm-12">
                                                         <textarea name="descricao" id="description" cols="30" rows="4"
-                                                            class="form-control" placeholder="Descrição"></textarea>
+                                                            class="form-control" placeholder="Descrição" required></textarea>
                                                     </div>
                                                 </div>
                                                 <div class="row mt-2">
@@ -248,11 +253,15 @@ export default {
         produtos: {
             type: Array,
         },
+        msg: {
+            type: String,
+        }
     },
     data() {
         return {
             image: null,
             valor: null,
+            mensagem: ""
         };
     },
     methods: {
@@ -289,8 +298,14 @@ export default {
         },
     },
     created() {
-
+       
     },
+    mounted() {
+        this.mensagem = this.msg
+        setTimeout(() => {
+         this.mensagem = ""   
+        },5000)
+    }
 
 };
 </script>

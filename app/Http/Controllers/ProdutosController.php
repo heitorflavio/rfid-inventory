@@ -72,7 +72,10 @@ class ProdutosController extends Controller
         ]);
 
 
-        return redirect()->back();
+        return Inertia::render('ProdutosCadastro', [
+            'user' => auth()->user(),
+            'msg' => 'Produto Cadastrado Com Sucesso'
+        ]);
     }
 
     /**

@@ -22,7 +22,7 @@ use Inertia\Inertia;
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/dashboard',  [App\Http\Controllers\PainelController::class, 'dashboard']);
-    Route::get('/produtos',  [App\Http\Controllers\PainelController::class, 'produtos']);
+    Route::get('/produtos',  [App\Http\Controllers\PainelController::class, 'produtos'])->name('produtos');
     Route::get('/produtos/cadastro',  [App\Http\Controllers\PainelController::class, 'produtosCadastro']);
     Route::post('/produtos/cadastro',  [App\Http\Controllers\ProdutosController::class, 'store']);
     Route::get('/produtos/edita/{id}', [App\Http\Controllers\ProdutosController::class, 'show']);
