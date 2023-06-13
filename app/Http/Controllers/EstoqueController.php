@@ -31,8 +31,6 @@ class EstoqueController extends Controller
     public function store(StoreEstoqueRequest $request, $id)
     {
 
-
-
         $response = [];
 
         foreach ($request->tags as $key => $value) {
@@ -46,13 +44,12 @@ class EstoqueController extends Controller
 
             $response = [$value => $estoque];
 
-            $tag = TagProdutos::where('hash', $value)->first();
-            $tag->status = 0;
-            $tag->save();
+            $tag = TagProdutos::where('hash', $value)->where('status', 1)->first();
+            $tag->update(['status' => 0]);
         }
 
 
-        return response()->json($response);
+        return response()->json($tag);
     }
 
     /**

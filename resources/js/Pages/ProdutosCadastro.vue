@@ -45,9 +45,14 @@
                 <div class="content">
                     <div class="container-fluid">
                         <div v-if="mensagem" class="alert alert-success">
-                          <div class="d-flex justify-content-center">
-                            {{ mensagem }}
-                          </div>
+                            <div class="d-flex justify-content-center">
+                                {{ mensagem }}
+                            </div>
+                        </div>
+                        <div v-if="erro" class="alert alert-danger">
+                            <div class="d-flex justify-content-center">
+                                {{ erro}}
+                            </div>
                         </div>
                         <div class="row">
                             <div class="col-12">
@@ -195,7 +200,7 @@
                                                     <div class="col-sm-12">
                                                         <img :src="image" alt="image" class="img-thumbnail"
                                                             style="width: 100px" v-if="image" />
-                                                        <img src="img/default-img.png" alt="image" class="img-thumbnail"
+                                                        <img :src="url + 'img/produtos/default.png'" alt="image" class="img-thumbnail"
                                                             style="width: 100px" v-else />
                                                     </div>
                                                 </div>
@@ -255,13 +260,18 @@ export default {
         },
         msg: {
             type: String,
+        },
+        error: {
+            type: String,
         }
     },
     data() {
         return {
             image: null,
             valor: null,
-            mensagem: ""
+            mensagem: "",
+            erro: "",
+            url: window.location.origin + "/",
         };
     },
     methods: {
@@ -303,8 +313,14 @@ export default {
     mounted() {
         this.mensagem = this.msg
         setTimeout(() => {
-         this.mensagem = ""   
-        },5000)
+            this.mensagem = ""
+        }, 5000)
+
+        this.erro = this.error
+        setTimeout(() => {
+            this.erro = ""
+        }, 10000)
+
     }
 
 };

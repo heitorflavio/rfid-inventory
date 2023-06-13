@@ -44,18 +44,29 @@
                 <!-- Main content -->
                 <div class="content">
                     <div class="container-fluid">
+                        <div v-if="mensagem" class="alert alert-success">
+                            <div class="d-flex justify-content-center">
+                                {{ mensagem }}
+                            </div>
+                        </div>
+                        <div v-if="erro" class="alert alert-danger">
+                            <div class="d-flex justify-content-center">
+                                {{ erro}}
+                            </div>
+                        </div>
                         <div class="row">
                             <div class="col-12">
                                 <div class="card">
-                                    <form :action="'/produtos/edita/'+produto.id" method="post" enctype="multipart/form-data">
+                                    <form :action="'/produtos/edita/' + produto.id" method="post"
+                                        enctype="multipart/form-data">
                                         <div class="card-header">
                                             <div class="d-flex justify-content-between">
                                                 <h4>Produto</h4>
                                                 <div class="card-tools">
-                                                <a :href="'/produtos/estoque/' + produto.id" class="btn btn-link">
-                                                    Adicionar Estoque 
-                                                </a>
-                                            </div>
+                                                    <a :href="'/produtos/estoque/' + produto.id" class="btn btn-link">
+                                                        Adicionar Estoque
+                                                    </a>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="card-body">
@@ -64,15 +75,15 @@
                                                     <div class="col-sm-6">
                                                         <div class="form-group">
                                                             <label for="nome">Nome</label>
-                                                            <input type="text" class="form-control" id="nome" name="nome" v-model="produto.nome"
-                                                                required />
+                                                            <input type="text" class="form-control" id="nome" name="nome"
+                                                                v-model="produto.nome" required />
                                                         </div>
                                                     </div>
                                                     <div class="col-sm-6">
                                                         <div class="form-group">
                                                             <label for="modelo">Modelo</label>
-                                                            <input type="text" class="form-control" id="modelo" v-model="produto.descricao"
-                                                                name="modelo" required />
+                                                            <input type="text" class="form-control" id="modelo"
+                                                                v-model="produto.descricao" name="modelo" required />
                                                         </div>
                                                     </div>
                                                 </div>
@@ -95,8 +106,8 @@
                                                                 <option value="4">Categoria 4</option>
                                                                 <option value="5">Categoria 5</option>
                                                             </select> -->
-                                                            <input type="text" class="form-control" id="categoria" v-model="produto.categoria"
-                                                                name="categoria">
+                                                            <input type="text" class="form-control" id="categoria"
+                                                                v-model="produto.categoria" name="categoria">
                                                         </div>
                                                     </div>
                                                     <div class="col-sm-3">
@@ -110,8 +121,8 @@
                                                                 <option value="4">Subcategoria 4</option>
                                                                 <option value="5">Subcategoria 5</option>
                                                             </select> -->
-                                                            <input type="text" class="form-control" id="subcategoria" v-model="produto.subcategoria"
-                                                                name="subcategoria">
+                                                            <input type="text" class="form-control" id="subcategoria"
+                                                                v-model="produto.subcategoria" name="subcategoria">
                                                         </div>
                                                     </div>
                                                     <div class="col-sm-6">
@@ -139,7 +150,8 @@
                                                                 <option value="4">Marca 4</option>
                                                                 <option value="5">Marca 5</option>
                                                             </select> -->
-                                                            <input type="text" class="form-control" id="marca" name="marca" v-model="produto.marca">
+                                                            <input type="text" class="form-control" id="marca" name="marca"
+                                                                v-model="produto.marca">
                                                         </div>
 
 
@@ -148,21 +160,22 @@
                                                     <div class="col-sm-3">
                                                         <div class="form-group">
                                                             <label for="valor">Valor</label>
-                                                            <input type="text" class="form-control" id="valor" name="valor" v-model="valor"
-                                                             required />
+                                                            <input type="text" class="form-control" id="valor" name="valor"
+                                                                v-model="valor" required />
                                                         </div>
                                                     </div>
                                                     <div class="col-sm-3">
                                                         <div class="form-group">
                                                             <label for="sku">sku</label>
-                                                            <input type="text" class="form-control" id="estoque" name="sku" v-model="produto.sku"
-                                                                required />
+                                                            <input type="text" class="form-control" id="estoque" name="sku"
+                                                                v-model="produto.sku" required />
                                                         </div>
                                                     </div>
                                                     <div class="col-sm-3">
                                                         <div class="form-group">
                                                             <label for="tipo">Unidade de Medida</label>
-                                                            <select class="form-control" id="tipo" name="unidade" v-model="produto.unidade" required>
+                                                            <select class="form-control" id="tipo" name="unidade"
+                                                                v-model="produto.unidade" required>
                                                                 <option value="NENHUM">SELECIONAR</option>
                                                                 <option value="METRO">METRO</option>
                                                                 <option value="UNIDADE">UNIDADE</option>
@@ -188,7 +201,8 @@
                                                 <div class="row">
                                                     <div class="col-sm-12">
                                                         <textarea name="descricao" id="description" cols="30" rows="4"
-                                                            class="form-control" placeholder="Descrição" required v-model="produto.descricao"></textarea>
+                                                            class="form-control" placeholder="Descrição" required
+                                                            v-model="produto.descricao"></textarea>
                                                     </div>
                                                 </div>
                                                 <div class="row mt-2">
@@ -216,7 +230,7 @@
             <!-- /.content-wrapper -->
 
             <!-- Control Sidebar -->
-          
+
             <!-- /.control-sidebar -->
 
             <!-- Main Footer -->
@@ -231,13 +245,10 @@
 
         <!-- REQUIRED SCRIPTS -->
     </div>
-   
-    
-
 </template>
          
 <script setup>
- import { vMaska } from "maska";
+import { vMaska } from "maska";
 </script>
 
 <script>
@@ -257,42 +268,50 @@ export default {
         produto: {
             type: Object,
         },
+        msg: {
+            type: String,
+        },
+        error: {
+            type: String,
+        }
     },
     data() {
         return {
             image: null,
             url: window.location.origin + "/",
             valor: this.produto.preco,
+            mensagem: "",
+            erro: "",
         };
     },
     methods: {
         onFileChange(e) {
             const file = e.target.files[0];
             this.image = URL.createObjectURL(file);
-           
+
         },
         mask: function (data) {
             return moment(data).format("DD/MM/YYYY HH:mm:ss");
         },
         ValorMask: function () {
-          
-                // Remove all non-numeric characters
-                let numericValue = this.produto.preco.replace(/[^\d]/g, '');
 
-                // Check if the value has not changed or if it's not a number
-                if (numericValue === oldValue || isNaN(numericValue)) {
-                    return;
-                }
+            // Remove all non-numeric characters
+            let numericValue = this.produto.preco.replace(/[^\d]/g, '');
 
-                // Convert the numeric value to a number
-                let number = parseFloat(numericValue);
+            // Check if the value has not changed or if it's not a number
+            if (numericValue === oldValue || isNaN(numericValue)) {
+                return;
+            }
 
-                // Format the number as currency
-                this.valor = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(number/ 100);
+            // Convert the numeric value to a number
+            let number = parseFloat(numericValue);
+
+            // Format the number as currency
+            this.valor = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(number / 100);
 
 
         }
-        
+
     },
     watch: {
         valor(newValue, oldValue) {
@@ -309,24 +328,34 @@ export default {
 
             // Format the number as currency
             this.valor = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(number / 100);
-            
+
         },
     },
     created() {
         // if (produto.image) {
         //     this.image = produto.image
         // }
-       
+
     },
     mounted() {
-    
+
+        this.mensagem = this.msg
+        setTimeout(() => {
+            this.mensagem = ""
+        }, 5000)
+
+        this.erro = this.error
+        setTimeout(() => {
+            this.erro = ""
+        }, 10000)
+
 
         if (this.produto.imagem) {
             this.image = this.url + this.produto.imagem
         } else {
             this.image = this.url + 'img/produtos/default.png'
         }
-       
+
     },
 
 };

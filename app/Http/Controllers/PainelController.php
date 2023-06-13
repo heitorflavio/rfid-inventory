@@ -137,9 +137,6 @@ class PainelController extends Controller
     public function relatorio(PDF $pdf)
     {
 
-        
-        
-        
         $estoque = Estoque::where('status', 1)->get();
         $produtos = Produtos::orderBy('id', 'desc')->get();
         $total = 0;

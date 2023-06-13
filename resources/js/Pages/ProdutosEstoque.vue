@@ -44,6 +44,11 @@
                 <!-- Main content -->
                 <div class="content">
                     <div class="container-fluid">
+                        <div v-if="msg" class="alert alert-success">
+                            <div class="d-flex justify-content-center">
+                                {{ msg }}
+                            </div>
+                        </div>
                         <div class="row">
                             <div class="col-12">
                                 <div class="card">
@@ -108,7 +113,7 @@
                                                                     <tr v-for="tag in tags" :key="tag.id">
                                                                         <th scope="row">{{ tag.id }}</th>
                                                                         <th>
-                                                                            <input type="checkbox" @click="add(tag.hash)">
+                                                                            <input type="checkbox" :disabled="isDisabled" @click="add(tag.hash)">
                                                                         </th>
                                                                         <td>{{ tag.hash }}</td>
                                                                         <td>{{ tag.name }}</td>
@@ -149,7 +154,7 @@
             <!-- /.content-wrapper -->
 
             <!-- Control Sidebar -->
-          
+
             <!-- /.control-sidebar -->
 
             <!-- Main Footer -->
@@ -188,7 +193,9 @@ export default {
         return {
             image: null,
             hashs: [],
-            url: window.location.origin + "/"
+            url: window.location.origin + "/",
+            msg: "",
+            isDisabled: false
         };
     },
     methods: {
@@ -201,13 +208,18 @@ export default {
             console.log(this.hashs)
         },
         produtoPost: function () {
+            this.isDisabled = true
             axios.post('/produtos/estoque/' + this.produto.id, {
                 tags: this.hashs,
                 produto_id: this.produto.id,
 
             }).then(response => {
                 console.log(response)
-                window.location.reload();
+                this.msg = 'Produto Adicionado Ao Estoque'
+                setTimeout(() => {
+                    this.mensagem = ""
+                    window.location.reload();
+                }, 5000)
 
             })
         }

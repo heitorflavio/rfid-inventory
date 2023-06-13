@@ -12,7 +12,7 @@
 
 const char* ssid = "Heitor";
 const char* password = "23456789";
-const char* serverHost = "http://192.168.1.7:8000/api/tag";
+const char* serverHost = "http://www.heitor.vps-kinghost.net/api/tag";
 const char* wifiErrorMsg = "Error in WiFi connection";
 const char* postErrorMsg = "Error on sending POST: ";
 
