@@ -74,7 +74,7 @@ class ProdutosController extends Controller
 
             return Inertia::render('ProdutosCadastro', ['user' => auth()->user(), 'msg' => 'Produto Atualizado Com Sucesso !!']);
         } catch (\Exception $e) {
-            return Inertia::render('ProdutosCadastro', ['user' => auth()->user(), 'error' => 'Erro ao Atualizar Produto: ' . $e]);
+            return Inertia::render('Produtos', ['user' => auth()->user(), 'error' => 'Erro ao Atualizar Produto: ' . $e]);
         }
     }
 

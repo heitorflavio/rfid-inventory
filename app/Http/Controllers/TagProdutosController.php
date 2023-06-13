@@ -6,6 +6,7 @@ use App\Models\TagProdutos;
 use App\Models\TagMestre;
 use App\Models\Estoque;
 use App\Models\User;
+use App\Models\Logs;
 use App\Http\Requests\StoreTagProdutosRequest;
 use App\Http\Requests\UpdateTagProdutosRequest;
 
@@ -98,9 +99,17 @@ class TagProdutosController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(TagProdutos $tagProdutos)
+    public function destroy(StoreTagProdutosRequest $request,$id)
     {
-        //
+        $tag = TagProdutos::where('id', $id)->where('status', 1)->first();
+        $tag->update(['status' => 0]);
+        $log = Logs::create([
+            'user_id' => auth()->user()->id,
+            'action' => "O Usuário Removeu a tag: " . $tag->hash . " id: " . $id . " motivo: " . $request->motivo
+        ]);
+
+
+        return redirect()->back();
     }
 
 }

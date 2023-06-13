@@ -50,7 +50,7 @@
                                     <div class="card-header">
                                         <div class="d-flex justify-content-between">
                                             <h4>Tags</h4>
-                                            
+
                                         </div>
                                     </div>
                                     <div class="card-body">
@@ -62,7 +62,7 @@
                                                         <th scope="col">HASH</th>
                                                         <th scope="col">CADASTRADO POR</th>
                                                         <th scope="col">CADASTRADO EM</th>
-                                                        <th scope="col">VER</th>
+                                                        <th scope="col">REMOVER</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -72,11 +72,18 @@
                                                         <td>{{ tag.name }}</td>
                                                         <td>{{ mask(tag.created_at) }}</td>
                                                         <td>
-                                                            <button type="button" class="btn btn-link"
-                                                                data-bs-toggle="modal" data-bs-target="#Modal"
-                                                                @click="getSkill(tag.id)">
-                                                                ver
-                                                            </button>
+                                                            <!-- Button trigger modal -->
+                                                            <div class="d-flex ml-4">
+                                                                <button type="button" class="btn btn-sm" v-if="user.role == 1"
+                                                                    @click="add(tag.id)"
+                                                                    data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                                    <span class="icon">X</span>
+                                                                </button>
+                                                                <button type="button" class="btn btn-sm btn-link" v-else>
+                                                                    <span class="icon2">X</span>
+                                                                </button>
+                                                            </div>
+
                                                         </td>
                                                     </tr>
                                                 </tbody>
@@ -94,14 +101,14 @@
             <!-- /.content-wrapper -->
 
             <!-- Control Sidebar -->
-          
+
             <!-- /.control-sidebar -->
 
             <!-- Main Footer -->
             <Footer />
         </div>
         <!-- ./wrapper -->
-
+        <Modal :id="id"/>
         <!-- REQUIRED SCRIPTS -->
     </div>
 </template>
@@ -109,13 +116,15 @@
 <script>
 import Sidebar from "@/Components/Sidebar.vue";
 import Footer from '@/Components/Footer.vue'
+import Modal from '@/Components/ModalTag.vue'
 import moment from "moment";
 import axios from 'axios'
 export default {
     name: "Tags",
     components: {
-        Sidebar, 
-        Footer
+        Sidebar,
+        Footer,
+        Modal
     },
     props: {
         user: {
@@ -128,12 +137,15 @@ export default {
     },
     data() {
         return {
-
+            id: null,
         };
     },
     methods: {
         mask: function (data) {
             return moment(data).format("DD/MM/YYYY HH:mm:ss");
+        },
+        add: function (id) {
+            this.id = id
         },
     },
     created() {
@@ -150,4 +162,17 @@ export default {
     background-color: transparent;
     border: none;
 } */
+
+.icon {
+    color: red;
+    text-decoration: solid;
+    font-size: 20px;
+    font-weight: 800;
+}
+.icon2 {
+    color: black;
+    text-decoration: solid;
+    font-size: 20px;
+    font-weight: 800;
+}
 </style>

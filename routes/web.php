@@ -32,8 +32,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/produtos/estoque/{id}',  [App\Http\Controllers\PainelController::class, 'produtosEstoque']);
     Route::post('/produtos/estoque/{id}',  [App\Http\Controllers\EstoqueController::class, 'store']);
     Route::get('/relatorio', [App\Http\Controllers\PainelController::class, 'relatorio'] );
-    
-
+    Route::post('/deletar/tag/{id}',  [App\Http\Controllers\TagProdutosController::class, 'destroy']);
 });
 
 

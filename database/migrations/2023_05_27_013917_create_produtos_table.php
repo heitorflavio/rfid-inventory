@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('marca');
             $table->string('unidade');
             $table->string('modelo');
+            $table->integer('status')->default(1);
             $table->string('sku')->unique();
             $table->timestamps();
         });
