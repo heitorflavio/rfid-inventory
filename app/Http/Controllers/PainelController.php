@@ -7,6 +7,7 @@ use Inertia\Inertia;
 use App\Models\Produtos;
 use App\Models\TagProdutos;
 use App\Models\Estoque;
+use App\Models\User;
 use Barryvdh\DomPDF\PDF; 
 
 class PainelController extends Controller
@@ -103,6 +104,17 @@ class PainelController extends Controller
         return Inertia::render('ProdutosCadastro', [
             'user' => auth()->user(),
         ]);
+    }
+    
+    public function Users(){
+        $users = User::orderBy('id', 'desc')->get();
+        return Inertia::render('Users', [
+            'users' => $users, 'user' => auth()->user()]);
+    }
+
+    public function UsersCadastro(){
+        return Inertia::render('UsersCadastro', [
+            'user' => auth()->user()]);
     }
 
     public function login()
